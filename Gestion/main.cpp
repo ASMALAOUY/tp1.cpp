@@ -20,13 +20,13 @@ void CompteBancaire::definirTitulaire(string nom) {
 
 void CompteBancaire::depot(double montant) {
     solde += montant;
-    cout << "Solde après dépôt : " << solde << endl;
+    cout << "Solde apres depot : " << solde << endl;
 }
 
 void CompteBancaire::retrait(double montant) {
     if (montant <= solde) {
         solde -= montant;
-        cout << "Solde après retrait : " << solde << endl;
+        cout << "Solde apres retrait : " << solde << endl;
     } else {
         cout << "Solde insuffisant pour effectuer le retrait." << endl;
     }

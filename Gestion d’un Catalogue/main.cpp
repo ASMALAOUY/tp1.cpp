@@ -2,44 +2,43 @@
 #include <string>
 using namespace std;
 
-class CompteBancaire {
+class Livre {
 private:
-    string titulaire;
-    double solde;
-public:
-    CompteBancaire(string nom, double montantInitial) {
-        titulaire = nom;
-        solde = montantInitial;
-    }
+    string titre;
+    string auteur;
+    int anneePublication;
 
-    void depot(double montant);
-    void retrait(double montant);
+public:
+    void definirLivre(string t, string a, int annee);
     void afficher();
+    int getAnneePublication();
 };
 
-void CompteBancaire::depot(double montant) {
-    solde += montant;
-    cout << "Solde après dépôt : " << solde << endl;
+
+void Livre::definirLivre(string t, string a, int annee) {
+    titre = t;
+    auteur = a;
+    anneePublication = annee;
 }
 
-void CompteBancaire::retrait(double montant) {
-    if (montant <= solde) {
-        solde -= montant;
-        cout << "Solde après retrait : " << solde << endl;
-    } else {
-        cout << "Solde insuffisant pour effectuer le retrait." << endl;
-    }
+void Livre::afficher() {
+    cout << "Titre : " << titre
+         << ", Auteur : " << auteur
+         << ", Annee : " << anneePublication << endl;
 }
 
-void CompteBancaire::afficher() {
-    cout << "Titulaire : " << titulaire << endl;
-    cout << "Solde actuel : " << solde << endl;
+int Livre::getAnneePublication() {
+    return anneePublication;
 }
 
 int main() {
-    CompteBancaire compte1("Mohamed Lachgar", 500.0);
-    compte1.depot(200.0);
-    compte1.retrait(150.0);
-    compte1.afficher();
+    Livre livre1, livre2;
+
+    livre1.definirLivre("Le C++ Moderne", "Bjarne Stroustrup", 2013);
+    livre2.definirLivre("Programmation Orientee Objet", "Jean Dupont", 2020);
+
+    livre1.afficher();
+    livre2.afficher();
+
     return 0;
 }
